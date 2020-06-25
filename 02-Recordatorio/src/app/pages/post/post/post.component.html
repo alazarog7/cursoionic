@@ -1,0 +1,4 @@
+<h1>Hola</h1>
+<ul class="list-group">
+    <app-siglepost *ngFor="let dato of datos | async" [dato]="dato" (clickPost)="escucharClick($event)"></app-siglepost>
+</ul>

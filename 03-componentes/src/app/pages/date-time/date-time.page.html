@@ -1,0 +1,37 @@
+<app-header [titulo]="titulo"></app-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <ion-label>Datos de nacimiento</ion-label>
+        </ion-list-header>
+        <ion-item>
+            <ion-label>
+                Fecha de Nacimiento
+            </ion-label>
+            <ion-datetime placeholder="Nacimiento" [ngModel]="fechaNaci.toISOString()" [monthNames]="meses" value="{{fechaNaci | date: 'yyyy-MM-dd'}}" display-format="YYYY MMMM DD" cancelText="Cancelar" (ionChange)="cambioFecha($event)"></ion-datetime>
+        </ion-item>
+        <ion-list-header>
+            <ion-label>Restricciones</ion-label>
+        </ion-list-header>
+        <ion-item>
+            <ion-label>
+                Min Y Max
+            </ion-label>
+            <ion-datetime placeholder="yyyy-mm-dd" [ngModel]="fechaNaci.toISOString()" [monthNames]="meses" value="{{fechaNaci | date: 'yyyy-MM-dd'}}" min="2015-01-01" max="2022-05-07" display-format="YYYY MMMM DD" cancelText="Cancelar" (ionChange)="cambioFecha($event)"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Años
+            </ion-label>
+            <ion-datetime placeholder="yyyy" [ngModel]="fechaNaci.toISOString()" [monthNames]="meses" value="{{fechaNaci | date: 'yyyy-MM-dd'}}" min="2015" max="2022" display-format="YYYY" cancelText="Cancelar" (ionChange)="cambioFecha($event)"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Años
+            </ion-label>
+            <ion-datetime [pickerOptions]="customPickerOptions" [(ngModel)]="customDate"></ion-datetime>
+        </ion-item>
+
+    </ion-list>
+</ion-content>
