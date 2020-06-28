@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title text-capitalize>{{nombre}}--{{pais}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <form #formulario="ngForm" (ngSubmit)="salirConArgumentos()">
+
+        <ion-list-header>
+            <ion-label>Formulario template: Valido {{formulario.valid}}</ion-label>
+        </ion-list-header>
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" name="nombre" [(ngModel)]="nombre" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Pais</ion-label>
+                <ion-input type="text" name="pais" [(ngModel)]="pais" required></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="full" type="submit" [disabled]="formulario.invalid">Enviar</ion-button>
+    </form>
+
+    <ion-button color="primary" expand="full" (click)="salirSinArgumentos()">
+        Cancelar
+    </ion-button>
+</ion-content>

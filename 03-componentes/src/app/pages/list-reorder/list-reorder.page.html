@@ -1,0 +1,20 @@
+<!--<app-header [titulo]="titulo"></app-header>-->
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Regresar" defaultHref="/inicio"></ion-back-button>
+        </ion-buttons>
+        <ion-title text-capitalize>List - Reorder</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-reorder-group [disabled]="false" (ionItemReorder)="reorder($event)">
+            <ion-item *ngFor="let personaje of personajes">
+                <ion-label>{{personaje}}</ion-label>
+                <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+        </ion-reorder-group>
+    </ion-list>
+    <ion-button expand="full" (click)="ver()">Ver</ion-button>
+</ion-content>
