@@ -1,0 +1,5 @@
+<ion-slides pages="true" class="slide-full" [options]="slideOpts">
+    <ion-slide *ngFor="let pelicula of peliculasRecientes" (click)="verDetalle(pelicula.id)">
+        <img [src]="pelicula.poster_path | imagen" alt=" ">
+    </ion-slide>
+</ion-slides>

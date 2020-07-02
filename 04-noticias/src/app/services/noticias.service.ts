@@ -23,7 +23,9 @@ export class NoticiasService {
   constructor(private http:HttpClient) { }
   
   private ejecutarQuery<T>(query:string){
-      return this.http.get<T>(`${url}${query}`,{headers})
+      //return this.http.get<T>(`${url}${query}`,{headers})
+
+      return this.http.get<T>(`${url}${query}&apikey=35f165a64e47482ca5cdef49cac86555`)
   }
 
   getTopHeadLines(){

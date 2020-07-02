@@ -1,0 +1,14 @@
+<ion-slides pages="true" class="slide-full" [options]="slideOpts">
+    <ion-slide *ngFor="let pelicula of peliculasRecientes">
+        <ion-card>
+            <img class="poster" [src]="pelicula.poster_path | imagen" alt=" " (click)="verDetalle(pelicula.id)">
+        </ion-card>
+    </ion-slide>
+    <ion-slide class="slide-mas" *ngIf="paginado">
+        <ion-card>
+            <ion-button expand="full" size="large" class="btn-mas" (click)="onClick()">
+                <ion-icon name="add" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-card>
+    </ion-slide>
+</ion-slides>

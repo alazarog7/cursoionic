@@ -1,0 +1,19 @@
+<ion-content [fullscreen]="true">
+
+    <div *ngFor="let genero of (peliculasGeneros | keyvalue ) ">
+        <ion-grid *ngIf="genero.value.length > 0">
+            <ion-row>
+                <ion-col>
+                    {{genero.key}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <app-slideshow-poster [peliculasRecientes]="genero.value" peliculasPorColumna="1" [paginado]="false"> </app-slideshow-poster>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+    </div>
+</ion-content>
