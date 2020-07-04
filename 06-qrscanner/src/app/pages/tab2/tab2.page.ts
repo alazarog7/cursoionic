@@ -9,13 +9,16 @@ import { DataLocalService } from '../../services/data-local.service';
 export class Tab2Page {
 
   constructor(public dataLocal:DataLocalService) {}
+  
   enviarCorreo(){
     console.log("csv");
     this.dataLocal.enviarCorreo();
   }
+  
   abrirRegistro(registro){
     this.dataLocal.abrirRegistro(registro);
   }
 
+  
 
 }

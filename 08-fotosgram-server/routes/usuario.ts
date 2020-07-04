@@ -26,13 +26,13 @@ userRoutes.post('/login',(req:Request,res:Response)=>{
                 avatar:userDB.avatar
            })
            return res.json({
-                ok:false,
-                toke:tokenUser
+                ok:true,
+                token:tokenUser
             })
         }else{
             return res.json({
                 ok:false,
-                toke:''
+                token:''
             })
         }
     })
