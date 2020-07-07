@@ -28,6 +28,9 @@ postRoutes.post('/',[verficaToken],(req:any,res:Response)=>{
     const body = req.body;
     body.usuario = req.usuario._id;
 
+    const imagenes = fileSystem.imagenesDeTempHaciaPost(req.usuario._id)
+    body.img = imagenes;
+
     Post.create(body).then( async postDB=>{
         await postDB.populate('usuario','-password').execPopulate();
         res.json({
@@ -41,7 +44,7 @@ postRoutes.post('/',[verficaToken],(req:any,res:Response)=>{
 })
 
 
-postRoutes.post('/upload',[verficaToken],(req:any,res:Response)=>{
+postRoutes.post('/upload',[verficaToken],async (req:any,res:Response)=>{
     if(!req.files ){
         return res.status(400).json({
             ok:false,
@@ -64,13 +67,24 @@ postRoutes.post('/upload',[verficaToken],(req:any,res:Response)=>{
             mensaje:'No se subio ningun archivo'
         })
     }
-    
-    fileSystem.guardarImgenTemporal(file,req.usuario._id);
+
+    await fileSystem.guardarImgenTemporal(file,req.usuario._id);
 
     return res.status(201).json({
         ok:true,
         file
     })
 })
+
+
+postRoutes.get('/imagen/:userid/:img',(req:any, res:Response)=>{
+    const userId = req.params.userid;
+    const img = req.params.img;
+
+    const pathFoto = fileSystem.getFotoUrl( userId, img);
+
+
+    return res.sendFile(pathFoto);
+});
 
 export default postRoutes;

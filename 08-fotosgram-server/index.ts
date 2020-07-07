@@ -12,7 +12,7 @@ server.app.use(bodyParser.urlencoded({extended:true}));
 
 server.app.use(bodyParser.json());
 
-server.app.use( fileUpload() );
+server.app.use( fileUpload({useTempFiles: true}) );
 
 server.app.use('/user',userRoutes);
 server.app.use('/posts',postRoutes);
