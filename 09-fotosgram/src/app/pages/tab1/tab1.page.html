@@ -1,17 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-header [translucent]="true" class="ion-no-border">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+        <ion-buttons slot="start">
+            <ion-icon slot="icon-only" name="bonfire-outline"></ion-icon>
+        </ion-buttons>
+        <ion-title slot="start">
+            FotosGram
+        </ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
+<ion-content [fullscreen]="true" color="light">
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <app-posts [posts]="posts"></app-posts>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="cargarPosts($event)">
+        <ion-infinite-scroll-content loadingSpinner="lines" loadingText="Cargando">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

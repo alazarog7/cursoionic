@@ -57,8 +57,8 @@ userRoutes.post('/create',(req:Request, res:Response)=>{
        })
 
        return res.json({
-            ok:false,
-            toke:tokenUser
+            ok:true,
+            token:tokenUser
         })
 
     }).catch((err)=>{
@@ -71,15 +71,15 @@ userRoutes.post('/create',(req:Request, res:Response)=>{
 
 
 userRoutes.post('/update',verficaToken,(req:any, res:Response)=>{
-    
+
     const user ={
         nombre: req.body.nombre || req.usuario.nombre,
         email: req.body.email || req.usuario.email,
         avatar: req.body.avatar || req.usuario.avatar
     }
 
-
-    Usuario.findByIdAndUpdate(req.body._id,user,(err,userDB)=>{
+    Usuario.findByIdAndUpdate(req.usuario._id,user,{new: true},(err,userDB)=>{
+        
         if(err) throw err;
 
         if(!userDB){
@@ -96,8 +96,8 @@ userRoutes.post('/update',verficaToken,(req:any, res:Response)=>{
         })
 
        return res.json({
-            ok:false,
-            toke:tokenUser
+            ok:true,
+            token:tokenUser
         })
     })
     
