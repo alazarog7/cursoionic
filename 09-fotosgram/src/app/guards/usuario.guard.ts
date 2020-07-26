@@ -14,8 +14,6 @@ export class UsuarioGuard implements CanActivate, CanLoad {
   }
 
   canLoad(route: Route, segments: import("@angular/router").UrlSegment[]): boolean | Observable<boolean> | Promise<boolean> {
-    
-   
 
     return this.usuarioService.validaToken().then(resp =>{
       console.log(resp)
